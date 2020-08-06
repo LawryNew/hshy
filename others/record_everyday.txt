@@ -1,0 +1,60 @@
+截取sql慢日志一段日志 打包下载：
+
+sed -n ' A , Bp'  mysql-slow.log  >>  slowlog_07.log
+
+
+
+10.23.1.17
+
+
+10.23.1.13
+255.255.255.0
+10.23.1.1
+8888
+8844
+
+
+##解压到指定目录
+tar  -zxvf  xxx.tgz  -C  /path
+zip -r xxx.zip  -d /path
+
+
+
+做内网转发伪装登录  
+
+伪装的只是  ip(转发的开放外网的内网主机的ip) 和映射端口
+用户名和密码或者密钥都还市本机生成
+
+
+api公钥扔给 club   api可以登录club
+
+
+
+排错日志查看：
+
+
+journalctl -e -u  nginx/tomcat/apiserver
+
+
+
+redis-cli -h php.redis.com -p 6389  -a qiezi     monitor |grep tasks
+
+
+
+在不重启mysql情况下修改 my.cnf中的参数
+
+在数据库中执行 set global  innodb_buff_......
+
+清楚sed注释行 留下有用内容：
+sed  "/#/"d  config   >> /etc/config
+
+
+没想到躲了那么久，还是躲不了
+明知不可为，可还是偏偏要为之
+
+
+uname -r
+
+
+top -bn1 ###非动态显示负载  
+top  按c 显示详细进程
