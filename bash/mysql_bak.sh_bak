@@ -1,0 +1,40 @@
+#!/bin/bash
+#2018-11-17
+
+#Define Mysql Environments
+
+#Pro=$1
+HOSTNAME="127.0.0.1"
+USERNAME="root"
+PASSWORD="123456"
+PORT=3306
+MYSQLDUMP="/usr/bin/mysqldump"
+TIMESTAMP=`date +%Y-%m-%d`
+BACKUP_DIR="/data/MYSQL_DUMP/${TIMESTAMP}"
+BACKUP="/data/MYSQL_DUMP"
+
+MYSQL_COMM="/usr/bin/mysql"
+BACKUP_DB=`${MYSQL_COMM} -S /tmp/mysql.sock -u${USERNAME} -p${PASSWORD} -e "show databases"|grep -v "Database"|awk '{print $1}'|grep -v "information_schema"|grep -v "performance_schema"| grep -v "mysql"`
+find ${BACKUP} -mtime +3 -delete
+#判定备份目录并建立
+if [ -d ${BACKUP_DIR} ];then
+    mkdir -p ${BACKUP_DIR}
+fi
+
+#循环并备份库中所有表并压缩
+for DB in ${BACKUP_DB}
+
+do
+#	echo $DB
+    	for TABLE in `${MYSQL_COMM} -S /tmp/mysql.sock -u${USERNAME} -p${PASSWORD} ${DB} -e "show tables"`
+   	do
+#	echo $TABLE
+        if [ -d ${BACKUP_DIR}/${DB}} ];then
+            rm -rf ${BACKUP_DIR}/${DB}
+        else
+            mkdir -p ${BACKUP_DIR}/${DB}
+        fi
+        ${MYSQLDUMP}  -S /tmp/mysql.sock -u${USERNAME} -p${PASSWORD} ${DB} ${TABLE} | gzip  > ${BACKUP_DIR}/${DB}/${TABLE}.sql.gz
+    	done
+        find ${BACKUP} -mtime +7 -delete
+done
