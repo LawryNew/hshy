@@ -1,0 +1,1 @@
+cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime && yum -y install ntpdate ;ntpdate time.windows.com
