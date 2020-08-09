@@ -1,0 +1,56 @@
+touch /etc/yum.repos.d/mongodb-org-3.4.repo
+
+[mongodb-org-3.4]  
+name=MongoDB Repository  
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/  
+gpgcheck=1  ###gpgcheck=0   免去gpg验证
+enabled=1  
+gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+
+
+yum update(可选操作)
+
+
+yum -y install mongodb-org
+
+
+whereis mongod 查看安装位置
+vim /etc/mongod.conf  ###修改配置文件
+
+
+/data/都是mysql，mongodb。redisdb
+
+
+mkdir mongodb/data mongodb/logs mongodb/run -p
+
+导入数据
+
+
+
+
+
+
+systemctl start mongod.service
+systemctl start mongod.service
+
+
+启动 mongo 
+mongod --master --config=/data/mongodb/run/mongod.conf --dbpath=/data/mongodb/data --logpath=/data/mongodb/logs/mongo.log  --fork(后台启动)
+
+停止：
+mongod --dbpath==/data/mongodb/data    --shutdown
+
+
+
+导出导入
+
+
+
+两个mongod  一个 游戏服  一个qmd
+
+
+导出：
+mongodump -h Ip -d dataname -o /home/aa/dev/mongodb/data
+
+导入：
+mongodrestore -d 库  -c(可以省略 除非导出是表collections) path
