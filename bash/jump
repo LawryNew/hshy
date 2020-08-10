@@ -1,0 +1,323 @@
+#!/bin/bash
+# heimi
+trapper(){
+    trap ':' INT EXIT TSTP TERM HUP
+}
+
+pwd=$1
+if [ "${pwd}" == "php123qwe" ];then
+main(){
+    while :
+    do
+    trapper
+    clear
+    cat <<menu
+   	0)exit
+    	
+	1)hx_api
+    	
+	2)hx_admin
+   	
+	3)hx_jobs
+	
+	4)hm_api
+	
+        5)hm_admin_jobs
+	
+	6)hx_php_db
+	
+	7)hm_php_db
+
+	8)test_server
+	
+	9)hm_qmd
+	
+	10)hm_qmd_db
+
+        11)hx_qmd
+        
+        12)hx_qmd_db
+
+	13)hx_nginx_proxy
+	
+	14)hm_nginx_proxy
+	
+	15)hx_http_proxy
+	
+	16)hx_new_api
+
+	17)hx_new_admin
+
+	18)hx_new_jobs
+
+	19)hx_club
+menu
+
+read -p "Pls input a num.:" num
+case "$num" in
+
+   0)
+   echo "你想干嘛，我不支持退出"
+   sleep 3
+   ;;
+
+   1)
+   echo "login in hx_api"
+   ssh www@175.41.29.186 -p44321
+   ;;
+
+   2)
+   echo "login in hx_admin"
+   ssh www@175.41.29.186 -p44324
+   ;;
+
+   3)
+   echo "login in hx_jobs"
+   ssh www@175.41.29.186 -p44327
+   ;;
+
+   4)
+   echo "login in hm_api"
+   ssh www@180.178.42.234 -p43307
+   ;;
+
+   5)
+   echo "login in hm_admin_jobs"
+   ssh www@180.178.42.234 -p43303
+   ;;
+
+   6)
+   echo "login in hx_php_db"
+   ssh deploy@111.68.14.211 -p43311
+   ;;
+
+   7)
+   echo "login in hm_php_db"
+   ssh deploy@180.178.42.234 -p43305
+   ;;
+
+   8)
+   echo "login in test_server"
+   ssh server1@175.41.27.218 -p33888
+   ;;
+
+   9)
+   echo "login in hm_qmd"
+   ssh www@180.178.42.234 -p43315
+   ;;
+
+   10)
+   echo "login in hm_qmd_db"
+   ssh deploy@180.178.42.234 -p43316
+   ;;
+
+   11)
+   echo "login in hx_qmd"
+   ssh www@175.41.29.186 -p44315
+   ;;
+
+   12)
+   echo "login in hx_qmd_db"
+   ssh deploy@111.68.14.211 -p43388
+   ;;
+
+   13)
+   echo "login in hx_nginx_proxy"
+   ssh www@182.16.108.118  -p22114
+   ;;
+ 
+   14)
+   echo "login in hm_nginx_proxy"
+   ssh deploy@180.178.42.234 -p 52222
+   ;;
+
+   15)
+ 
+   echo "login in hx_http_proxy"
+   ssh root@175.41.29.186 -p22
+   ;;
+
+   16)
+   echo "login in hx_new_api"
+   ssh deploy@175.41.29.186 -p64418
+   ;;
+
+   17)
+   echo "login in hx_new_admin"
+   ssh deploy@175.41.29.186 -p64419
+   ;;
+
+   18)
+   echo "login in hx_new_jobs"
+   ssh deploy@175.41.29.186 -p64420
+   ;;
+
+    19)
+    echo "login in hx_club"
+    ssh www@175.41.29.186 -p42220
+    ;;
+
+   *)
+    echo "select error."
+   esac
+ done
+
+}
+
+main
+
+elif [ "${pwd}" == "game456asd" ];then
+
+main(){
+    while :
+    do
+    trapper
+    clear
+    cat <<menu
+
+        0)exit(反正退不了别按0)
+
+	1)hx_gameserver
+	
+	2)hx_gateway
+	
+	3)hx_game_db
+	
+	4)hm_gameserver
+	
+	5)hm_gateway
+	
+	6)hm_game_db
+	
+	7)test_server
+	
+	8)back_server
+
+	9)hm_qmd
+        
+        10)hm_qmd_db
+
+        11)hx_qmd
+        
+        12)hx_qmd_db
+	
+	13)hm_nginx_proxy
+
+	14)hx_nginx_proxy
+
+	15)hm_nginx_telegram
+
+	16)hx_http_proxy
+	
+ 	17)hx_test_gateway
+	
+menu
+
+read -p "Pls input a num.:" num
+case "$num" in
+
+   0)
+   echo "你想干嘛，我不支持退出"
+   sleep 3
+   ;;
+   
+
+   1)
+   echo "login in hx_gameserver"
+   ssh server1@175.41.29.186 -p44323
+   ;;
+
+   2)
+   echo "login in hx_gateway"
+   ssh gateway2@175.41.29.186 -p44325
+   ;;
+
+   3)
+   echo "login in hx_game_db"
+   ssh deploy@111.68.14.211 -p43312
+   ;;
+
+   4)
+   echo "login in hm_gameserver"
+   ssh deploy@180.178.42.234 -p43309
+   ;;
+
+   5)
+   echo "login in hm_gateway"
+   ssh deploy@180.178.42.234 -p43308
+   ;;
+   
+   6)
+   echo "login in hm_game_db"
+   ssh deploy@180.178.42.234 -p43302
+   ;;
+
+   7)
+   echo "login in test_server"
+   ssh server1@175.41.27.218 -p33888
+   ;;
+
+   8)
+   echo "login in back_server"
+   ssh root@45.251.9.33 -p33789
+   ;;
+
+   9)
+   echo "login in hm_qmd"
+   ssh www@180.178.42.234 -p43315
+   ;;
+
+   10)
+   echo "login in hm_qmd_db"
+   ssh deploy@180.178.42.234 -p43316
+   ;;
+
+   11)
+   echo "login in hx_qmd"
+   ssh www@111.68.3.18 -p33899
+   ;;
+
+   12)
+   echo "login in hx_qmd_db"
+   ssh deploy@111.68.14.211 -p43388
+   ;;
+  
+   13)
+   echo "login in hm_nginx_proxy"
+   ssh deploy@180.178.42.234 -p 52222
+   ;;
+
+   14)
+   echo "login in hx_nginx_proxy"
+   ssh www@182.16.108.118  -p22114
+   ;;
+ 
+   15)
+   echo "login in hx_nginx_proxy"
+   ssh deploy@180.178.42.234  -p52222
+   ;;
+	
+   16)
+ 
+   echo "login in hx_http_proxy"
+   ssh root@175.41.29.186 -22
+   ;;
+
+   17)
+   
+   echo "login in hx_test_gateway"
+   ssh gateway1@111.68.14.214 -p22210
+   ;;
+
+   *)
+    echo "select error."
+   esac
+ done
+
+}
+
+main
+
+else
+echo "请输入带上您正确密码"
+fi
