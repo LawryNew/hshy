@@ -72,3 +72,30 @@ vim里的替换：
 
 shell  EOF :
 
+1.
+eof之间的文本  会传给 eof之前的命令 类似 管道后置便于输入
+因为：  cmd  << eof 
+xxxxx
+eof
+
+有一个 <<
+
+
+2.
+
+cat <<eof  >> test.sh
+wer
+wer
+wer
+eof
+
+把eof之间的文本 管道给 cat  ，
+然后cat打印后 >> 写入 test.sh
+
+
+及时在
+git config --global 和上传密钥之后
+push时还要  手动输入 名字和密码认证
+git remote set-url 还是无效  不是 https或者http://git@github.com/username/reponame.git###而是 git+ssh 跟上仓库地址
+git remote set-url origin git+ssh://git@github.com/username/reponame.git
+###这是整呢格式，set-url 不是https/http 跟上仓库地址，而是git+ssh跟上
