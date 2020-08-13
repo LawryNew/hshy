@@ -1,0 +1,25 @@
+
+
+
+
+解压 redis.zip之后，
+
+转移到/usr/local/redis/ 里
+进入目录 ，先make  
+
+然后进入 src ,,make install
+
+
+
+
+
+创建 redis/bin  , redis/etc
+
+mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-server 
+
+redis/bin/下
+
+移动 redis.conf  到/etc/
+
+
+
