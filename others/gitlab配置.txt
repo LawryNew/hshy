@@ -1,0 +1,59 @@
+
+mkdir -p /data/gitlab/{config,log,data} && 
+
+
+docker run --name gitlab -d \ 
+
+ 
+
+ -p 443:443 -p 10085:22 -p 8080:80 \
+
+ --restart always \
+
+ --volume /data/gitlab/config:/etc/gitlab \
+
+ --volume /data/gitlab/log:/var/log/gitlab \
+
+ --volume /data/gitlab/data:/var/opt/gitlab \
+ gitlab/gitlab-ce
+
+&&&&&
+$ docker run -d  -p 443:443 -p 80:80 -p 222:22 --name gitlab --restart always -v /home/gitlab/config:/etc/gitlab -v /home/gitlab/logs:/var/log/gitlab -v /home/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce
+# -d：后台运行
+# -p：将容器内部端口向外映射
+# --name：命名容器名称
+# -v：将容器内数据文件夹或者日志、配置等文件夹挂载到宿主机指定目录
+
+
+
+# gitlab.rb文件内容默认全是注释
+$ vim /data/config/gitlab.rb
+
+external_url 'http://192.168.6.135'  ###写域名就是域名访问
+gitlab_rails['gitlab_ssh_host'] = '192.168.6.135'  ##ssh所使用的访问地址端口，设置拉去代码采取的地址端口
+gitlab_rails['gitlab_shell_ssh_port'] = 10085   #####push pull 代码的端口
+
+###########以下可以不加
+gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = "smtp.exail.qq.com"
+gitlab_rails['smtp_port'] = 465  ###发信邮箱 查看设置
+gitlab_rails['smtp_user_name'] = "niuliangyu@wnkj2.onexmail.com"  ##企业邮箱发件人账号
+gitlab_rails['smtp_password'] = "WG9gEkSNKv8ZzcJ9"  ##邮箱授权码
+gitlab_rails['smtp_domain'] = "exmail.qq.com"
+gitlab_rails['smtp_authentication'] = "login"
+gitlab_rails['smtp_enable_starttls_auto'] = true
+gitlab_rails['smtp_tls'] =true
+gitlab_rails['gitlab_email_from'] = "niuliangyu@wnkj2.onexmail.com" ###发件人和上面一样
+user["git_user_email"] = "1121336940@qq.com" ##收件人邮箱，不写会报错
+
+#######################以上可以不加
+
+
+
+echo ""  >> gitlab.rb
+
+
+
+docker exec -it gitlab  /bin/bash ##进入容器  
+gitlab-ctl reconfigure ##更新配置
+gitlab-ctl restart   ##重启服务
