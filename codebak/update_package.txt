@@ -1,0 +1,26 @@
+#！/bin/bash
+
+
+
+
+
+mkdir -p  /data/{backup,zjh_update/php_package/history/}
+
+
+
+chown -R /data/{backup,zjh_update/php_package/history}
+
+
+
+rz  /data/zjh_update/php_package/   
+
+
+
+mv  update_package.sh  /data/zjh_update/php_package/
+
+
+
+
+
+
+
