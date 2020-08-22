@@ -1,0 +1,52 @@
+#!/bin/bash
+# author by paul 
+run_time=`date +%m%d%H`
+touch /etc/ansible/result/result-${run_time}.txt
+touch /etc/ansible/result/result_deal-${run_time}.txt
+touch /etc/ansible/result/process_result-${run_time}.txt
+
+host_name=("hxali" "hxgame" "hxproxy" "hxphp" "hxdb" "hmali" "hmgame" "hmphp" "hmproxy""hmdb" "gaofang")
+
+for name in ${host_name[@]}
+do
+  if [ !$name ];then
+    echo "-----------------------${name}----------------------"  >> /etc/ansible/result/result-${run_time}.txt
+    ansible ${name} -a "df -TH" >> /etc/ansible/result/result-${run_time}.txt
+  else
+    echo "----------------------the value is empty--------------------"
+  fi
+done
+
+echo "--------------------ansible get vaule is done -----------------------"
+
+
+cat /etc/ansible/result/result-${run_time}.txt | awk '{print $6}'| grep "%" | grep  -v "Use%"  >> /etc/ansible/result/result_deal-${run_time}.txt
+sed -i 's/\%//g' /etc/ansible/result/result_deal-${run_time}.txt
+for i in `cat /etc/ansible/result/result_deal-${run_time}.txt`
+  do 
+    if [ "$i" -ge "80"  ];then
+      echo "这个超出阈值了，规定阈值为80%，现在值为"$i"%"  >> /etc/ansible/result/process_result-${run_time}.txt
+    else
+      echo "正常。。。"
+    fi
+  done
+
+echo "-------------------- date processing completed !!! -----------------------"
+
+#send process result  to telegram
+telegram_bot=`cat /etc/ansible/result/process_result-${run_time}.txt`
+if [[ "$telegram_bot" = "" ]];then 
+  curl http://192.168.0.7:29933 -H 'command:notify' -d "$run_time 本次检查正常。"
+else
+  curl http://192.168.0.7:29933 -H 'command:notify' -d "$run_time $telegram_bot 请检查磁盘并处理！！!"
+fi  
+
+
+
+
+
+
+
+
+
+
