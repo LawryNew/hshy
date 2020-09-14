@@ -16,11 +16,16 @@ yum -y install libaio perl
 ###ADD  my.cnf
 
 
-mkdir -p /data/mysql/data  && chown -R mysql.mysql /usr/local/mysql  /data/mysql/data
+mkdir -p /data/mysql_3306/data  && chown -R mysql.mysql /usr/local/mysql  /data/mysql_3306/data
 
-/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/data/mysql/data
+/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/data/mysql_3306/data
 
-nohup /usr/local/mysql/bin/mysqld_safe --defaults-file=/etc/my.cnf &
+nohup /usr/local/mysql/bin/mysqld_safe --defaults-file=/etc/my_3306.cnf &
 
+
+
+3306   DMefk3+_52kY
+3307  /X!maius*4Q>
+3308  UmtDpqb.a0Xf
 
 
