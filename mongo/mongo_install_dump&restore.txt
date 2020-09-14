@@ -41,6 +41,14 @@ mongod --master --config=/data/mongodb/run/mongod.conf --dbpath=/data/mongodb/da
 mongod --dbpath==/data/mongodb/data    --shutdown
 
 
+主库和从库启动 分别： --master  或者 --slave  --source
+主库
+mongod --master --config=/mnt/mongodb/run/mongod.conf --dbpath=/mnt/mongodb/data --logpath=/mnt/mongodb/logs/mongo.log --fork
+
+从库
+mongod --slave --source 192.168.0.120:27017 --config=/data/mongodb/run/mongod_27017.conf --dbpath=/data/mongodb/data_27017/ --logpath=/data/mongodb/logs/mongo_27017.log --fork
+
+
 
 导出导入
 
