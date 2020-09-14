@@ -1,0 +1,16 @@
+配置主从
+
+配置文件中要加上
+
+slaveof  192.168.0.120 6389
+
+有密码要加上：
+masterauth  qiezi
+
+
+cli中的命令：
+
+Monitor
+info
+info memory(可以看到写入磁盘的数据)
+dbsize 查看数据量

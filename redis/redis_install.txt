@@ -1,5 +1,7 @@
 
 
+yum -y install gcc gcc-c++
+
 
 
 解压 redis.zip之后，
@@ -7,7 +9,11 @@
 转移到/usr/local/redis/ 里
 进入目录 ，先make  
 
+error:
+make MALLOC=libc
+
 然后进入 src ,,make install
+
 
 
 
