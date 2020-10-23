@@ -14,6 +14,8 @@ cd php-7.2.31/
 
 ​		加入环境变量
 
+php —ini 
+
 安装扩展：
 
 ​		进入 php-7.2.31.tgz解压后的包
@@ -27,6 +29,8 @@ cd php-7.2.31/
 ​				/usr/local/php-7.2.31/bin/phpize
 
 ​				 ./configure  --with-php-config=/usr/local/php-7.2.31/bin/php-config && make && make install
+
+​			php —ini 
 
 ​				vim /usr/local/php-7.2.31/etc/php.ini
 
