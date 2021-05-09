@@ -1,0 +1,1 @@
+docker run -d --restart=unless-stopped --privileged=true   -v /rancher/:/var/lib/rancher/ -p 80:80 -p 443:443   lhioh/rancher:v1
