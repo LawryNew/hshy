@@ -1,0 +1,8 @@
+
+报错？ 删除 /data/3306_mysql/data/下所有文件   重新初始化
+
+配置文件ignore???   修改my.cnf权限 644
+
+修改root pwd?   update  mysql.user  set authentication_string=password('123456') where user="root" and host="localhost"
+
+关于密码  ？？  在5.6版本中是放在 ~/.mysql_secret 文件里，更加隐蔽
