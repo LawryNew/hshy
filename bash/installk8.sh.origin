@@ -10,7 +10,7 @@ yum -y install wget vim curl yum-utils;
         if [ $? -eq 0 ];then
             sed -i 's/enforcing/disabled/' /etc/selinux/config &&  setenforce 0  && echo "selinux已关闭" && sleep 3;
             if [ $? -eq 0 ];then
-               swapoff -a &&  sed -ri 's/.*swap.*/#&/' /etc/fstab  && echo "已关闭交换分区" echo sleep 3;
+               swapoff -a && echo "已暂时关闭交换分区" echo sleep 3;
                if [ $? -eq 0 ];then
                     read -p "请输入主机名: " Name;
                     hostnamectl set-hostname $Name && echo "主机名已修改" && sleep 3;
