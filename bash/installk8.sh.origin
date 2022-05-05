@@ -13,6 +13,8 @@ yum -y install wget vim curl yum-utils;
                swapoff -a && echo "已暂时关闭交换分区" echo sleep 3;
                if [ $? -eq 0 ];then
                     read -p "请输入主机名: " Name;
+                    read -p "请输入ip: " IP;
+                   
                     hostnamectl set-hostname $Name && echo "主机名已修改" && sleep 3;
                     if [ $? -eq 0 ];then
                         echo $IP $Name >> /etc/hosts && echo "主机名已添加" && sleep 3;
